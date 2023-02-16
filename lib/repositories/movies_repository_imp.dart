@@ -13,10 +13,15 @@ final DioService _dioService;
   @override
 
 
-  Future<Movies> getMovies() async {
+  Future<List<Movies>> getMovies() async {
     
     var result = await _dioService.getDio().get(API.requestMovieList);
-    return Movies.fromJson(result.data);
+     final List<dynamic> data = result.data;
+    return Movies.fromJson(result.data) as Future<List<Movies>>;
+    
   }
 
 }
+
+
+

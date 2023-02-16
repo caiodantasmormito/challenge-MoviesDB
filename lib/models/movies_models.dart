@@ -1,6 +1,6 @@
 class Movies {
   Movies({
-    required this.averageRating,
+    //required this.averageRating,
     required this.backdropPath,
     
     required this.createdBy,
@@ -20,7 +20,7 @@ class Movies {
     required this.totalPages,
     required this.totalResults,
   });
-  late final double averageRating;
+  //late final double averageRating;
   late final String backdropPath;
   
   late final CreatedBy createdBy;
@@ -41,7 +41,7 @@ class Movies {
   late final int totalResults;
   
   Movies.fromJson(Map<String, dynamic> json){
-    averageRating = json['average_rating'];
+    //averageRating = json['average_rating'];
     backdropPath = json['backdrop_path'];
     
     createdBy = CreatedBy.fromJson(json['created_by']);
@@ -64,7 +64,7 @@ class Movies {
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['average_rating'] = averageRating;
+    //_data['average_rating'] = averageRating;
     _data['backdrop_path'] = backdropPath;
     
     _data['created_by'] = createdBy.toJson();
@@ -166,7 +166,7 @@ class Results {
     popularity = json['popularity'];
     posterPath = json['poster_path'];
     releaseDate = json['release_date'];
-    title = json['title'];
+    title = json['title'] as String;
     video = json['video'];
     voteAverage = json['vote_average'];
     voteCount = json['vote_count'];

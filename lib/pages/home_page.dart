@@ -20,13 +20,23 @@ class _HomePageState extends State<HomePage> {
    Widget build(BuildContext context) {
        return Scaffold(
            appBar: AppBar(title: const Text('Movies'),),
-           body:  ValueListenableBuilder<Movies?>(valueListenable: _controller.movies, 
+           body:  ValueListenableBuilder<List<Movies?>>(valueListenable: _controller.movies, 
            builder: (_, movies, __) {
             return movies != null 
-            ? ListView.builder(itemCount: movies.results.length,
-              itemBuilder: (_, idx) => 
-            Text(movies.results[idx].title, style: const TextStyle(color: Colors.red),),) 
-            : Container();},)
+            ? ListView.builder(itemCount: movies.length,
+              itemBuilder: (context, index) => 
+            Column(
+              children:  [
+                Text(movies[index]!.results.first.title, 
+                style: const TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
+            ) 
+            : Container(color: Colors.red,);
+            },
+            ),
        );
   }
 }
+
