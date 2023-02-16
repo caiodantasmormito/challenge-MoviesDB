@@ -32,7 +32,7 @@ class Welcome extends StatelessWidget {
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.white)),
                   onPressed: () {Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => (const HomePage()))); 
+                      builder: (context) => (const HomePage())),); 
                     
                   } ,
                   child: const Text(
