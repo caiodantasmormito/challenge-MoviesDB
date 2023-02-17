@@ -6,37 +6,42 @@ import 'package:movies_db/service/dio_service_imp.dart';
 import '../models/movies_models.dart';
 
 class HomePage extends StatefulWidget {
-
-  const HomePage({ Key? key }) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
   final MoviesController _controller = MoviesController(MoviesRepositoryImp(DioServiceImp()));
-   @override
-   Widget build(BuildContext context) {
-       return Scaffold(
-           appBar: AppBar(title: const Text('Movies'),),
-           body:  ValueListenableBuilder<List<Movies?>>(valueListenable: _controller.movies, 
-           builder: (_, movies, __) {
-            return movies != null 
-            ? ListView.builder(itemCount: movies.length,
-              itemBuilder: (context, index) => 
-            Column(
-              children:  [
-                Text(movies[index]!.results.first.title, 
-                style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-            ) 
-            : Container(color: Colors.red,);
-            },
-            ),
-       );
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Movies'),
+      ),
+      body: ValueListenableBuilder<Movies?>(
+        valueListenable: _controller.movies,
+        builder: (_, movies, __) {
+          return movies != null
+              ? ListView.builder(
+                  itemCount: movies.results.length,
+                  itemBuilder: (context, index) {
+                    final result = movies.results[index];
+                    return Column(
+                      children: [
+                        Text(
+                          result.title,
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    );
+                  },
+                )
+              : const Center(child: CircularProgressIndicator());
+                  
+        },
+      ),
+    );
   }
 }
-

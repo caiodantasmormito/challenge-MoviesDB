@@ -4,24 +4,15 @@ import 'package:movies_db/service/dio_service.dart';
 
 import '../utils/api_utils.dart';
 
-class MoviesRepositoryImp implements MoviesRepository{
-
-final DioService _dioService;
+class MoviesRepositoryImp implements MoviesRepository {
+  final DioService _dioService;
 
   MoviesRepositoryImp(this._dioService);
 
   @override
-
-
-  Future<List<Movies>> getMovies() async {
-    
+  Future<Movies?> getMovies() async {
     var result = await _dioService.getDio().get(API.requestMovieList);
-     final List<dynamic> data = result.data;
-    return Movies.fromJson(result.data) as Future<List<Movies>>;
-    
+    final data = result.data;
+    return Movies.fromJson(result.data);
   }
-
 }
-
-
-
