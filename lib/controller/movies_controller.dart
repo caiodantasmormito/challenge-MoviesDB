@@ -11,8 +11,19 @@ class MoviesController {
   }
 
   ValueNotifier<Movies?> movies = ValueNotifier<Movies?>(null);
+  Movies? _cachedMovies;
+
+  onChanged(String value) {
+    List<Results> list = _cachedMovies!.results
+        .where(
+          (e) => e.toString().contains((value)),
+        )
+        .toList();
+        movies.value = movies.value!.copyWith(results: list);
+  }
 
   fetch() async {
-    movies.value = await _moviesRepository.getMovies();
+    movies.value = await _moviesRepository.getMovies(); 
+    _cachedMovies = movies.value;
   }
 }

@@ -1,8 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class Movies {
   Movies({
     //required this.averageRating,
     required this.backdropPath,
-    required this.createdBy,
+    
     required this.description,
     required this.id,
     required this.iso_3166_1,
@@ -21,7 +22,7 @@ class Movies {
   //late final double averageRating;
   late final String backdropPath;
 
-  late final CreatedBy createdBy;
+  
   late final String description;
   late final int id;
   late final String iso_3166_1;
@@ -42,7 +43,7 @@ class Movies {
     //averageRating = json['average_rating'];
     backdropPath = json['backdrop_path'];
 
-    createdBy = CreatedBy.fromJson(json['created_by']);
+    
     description = json['description'];
     id = json['id'];
     iso_3166_1 = json['iso_3166_1'];
@@ -65,7 +66,7 @@ class Movies {
     //_data['average_rating'] = averageRating;
     _data['backdrop_path'] = backdropPath;
 
-    _data['created_by'] = createdBy.toJson();
+    
     _data['description'] = description;
     _data['id'] = id;
     _data['iso_3166_1'] = iso_3166_1;
@@ -83,36 +84,95 @@ class Movies {
     _data['total_results'] = totalResults;
     return _data;
   }
-}
 
-class CreatedBy {
-  CreatedBy({
-    required this.gravatarHash,
-    required this.id,
-    required this.name,
-    required this.username,
-  });
-  late final String gravatarHash;
-  late final String id;
-  late final String name;
-  late final String username;
-
-  CreatedBy.fromJson(Map<String, dynamic> json) {
-    gravatarHash = json['gravatar_hash'];
-    id = json['id'];
-    name = json['name'];
-    username = json['username'];
+  @override
+  bool operator ==(covariant Movies other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.backdropPath == backdropPath &&
+      
+      other.description == description &&
+      other.id == id &&
+      other.iso_3166_1 == iso_3166_1 &&
+      other.iso_639_1 == iso_639_1 &&
+      other.name == name &&
+      other.page == page &&
+      other.posterPath == posterPath &&
+      other.public == public &&
+      other.results == results &&
+      other.revenue == revenue &&
+      other.runtime == runtime &&
+      other.sortBy == sortBy &&
+      other.totalPages == totalPages &&
+      other.totalResults == totalResults;
   }
 
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['gravatar_hash'] = gravatarHash;
-    _data['id'] = id;
-    _data['name'] = name;
-    _data['username'] = username;
-    return _data;
+  @override
+  int get hashCode {
+    return backdropPath.hashCode ^
+      
+      description.hashCode ^
+      id.hashCode ^
+      iso_3166_1.hashCode ^
+      iso_639_1.hashCode ^
+      name.hashCode ^
+      page.hashCode ^
+      posterPath.hashCode ^
+      public.hashCode ^
+      results.hashCode ^
+      revenue.hashCode ^
+      runtime.hashCode ^
+      sortBy.hashCode ^
+      totalPages.hashCode ^
+      totalResults.hashCode;
+  }
+
+  @override
+  String toString() {
+    return 'Movies(backdropPath: $backdropPath, description: $description, id: $id, iso_3166_1: $iso_3166_1, iso_639_1: $iso_639_1, name: $name, page: $page, posterPath: $posterPath, public: $public, results: $results, revenue: $revenue, runtime: $runtime, sortBy: $sortBy, totalPages: $totalPages, totalResults: $totalResults)';
+  }
+
+  Movies copyWith({
+     String? backdropPath,
+     
+     String? description,
+     int? id,
+     String? iso_3166_1,
+     String? iso_639_1,
+     String? name,
+     int? page,
+     String? posterPath,
+     bool? public,
+     List<Results>? results,
+     int? revenue,
+     int? runtime,
+     String? sortBy,
+     int? totalPages,
+     int? totalResults,
+  }) {
+    return Movies(
+      backdropPath: backdropPath ?? this.backdropPath,
+      
+      description: description ?? this.description,
+      id: id ?? this.id,
+      iso_3166_1: iso_3166_1 ?? this.iso_3166_1,
+      iso_639_1: iso_639_1 ?? this.iso_639_1,
+      name: name ?? this.name,
+      page: page ?? this.page,
+      posterPath: posterPath ?? this.posterPath,
+      public: public ?? this.public,
+      results: results ?? this.results,
+      revenue: revenue ?? this.revenue,
+      runtime: runtime ?? this.runtime,
+      sortBy: sortBy ?? this.sortBy,
+      totalPages: totalPages ?? this.totalPages,
+      totalResults: totalResults ?? this.totalResults,
+    );
   }
 }
+
+
 
 class Results {
   Results({
