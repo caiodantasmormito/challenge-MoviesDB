@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:movies_db/controller/movies_controller.dart';
 import 'package:movies_db/repositories/movies_repository_imp.dart';
 import 'package:movies_db/service/dio_service_imp.dart';
-import 'package:movies_db/utils/api_utils.dart';
 import 'package:movies_db/widgets/list_movies_card.dart';
 
 import '../models/movies_models.dart';
@@ -43,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                           itemBuilder: (_, index) {
                             final result = movies.results[index];
                             return ListMoviesCard(
-                              results: movies.results[index],
+                              results: result,
                             );
                           },
                           separatorBuilder: (_, __) => const Divider(),

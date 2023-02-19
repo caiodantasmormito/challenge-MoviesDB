@@ -12,7 +12,7 @@ class MoviesRepositoryImp implements MoviesRepository {
   @override
   Future<Movies?> getMovies() async {
     var result = await _dioService.getDio().get(API.requestMovieList);
-    final data = result.data;
+    
     return Movies.fromJson(result.data);
   }
 }

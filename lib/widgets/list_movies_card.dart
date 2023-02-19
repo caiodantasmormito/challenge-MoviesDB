@@ -17,12 +17,16 @@ class ListMoviesCard extends StatelessWidget {
       height: 180,
       decoration: const BoxDecoration(
         color: Colors.black54,
+        borderRadius: BorderRadius.all(Radius.circular(12))
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.network(
-            API.requestImg(results.posterPath),
+          ClipRRect(borderRadius: const BorderRadius.only(topLeft: Radius.circular(12), bottomLeft: Radius.circular(12),),
+            child: Image.network(
+              API.requestImg(results.posterPath),
+              
+            ),
           ),
           Expanded(
             child: Padding(
@@ -38,6 +42,7 @@ class ListMoviesCard extends StatelessWidget {
                     softWrap: true,
                     overflow: TextOverflow.visible,
                   ),
+                  
                   const Spacer(),
                   Text('Popularidade ${results.popularity}'),
                   Text('Votos ${results.voteAverage}')
