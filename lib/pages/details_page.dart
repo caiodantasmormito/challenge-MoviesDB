@@ -45,10 +45,8 @@ class DetailsPage extends StatelessWidget {
                     onTap: () {},
                     child: const Icon(Icons.favorite, size: 16,),
                   ),
-                  const SizedBox(
-                    width: 180,
-                  ),
-                  Text('Likes: ${results.voteCount.toString()}'),
+                  
+                  
                 ],
               ),
               const SizedBox(height: 16,),
