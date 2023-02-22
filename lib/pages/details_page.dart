@@ -1,10 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/movies_models.dart';
 import '../utils/api_utils.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+import 'favorites.dart';
 
 class DetailsPage extends StatefulWidget {
   final Results results;
@@ -19,6 +22,7 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   late YoutubePlayerController _playerController;
+  final List<Results> listFavorite = [];
 
   @override
   void initState() {
@@ -32,7 +36,10 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
+    final favorite = listFavorite.contains(widget.results);
+    var favoriteMovies = Provider.of<Favorites>(context);
     return Scaffold(
       appBar: AppBar(
           title: Text(
@@ -47,12 +54,15 @@ class _DetailsPageState extends State<DetailsPage> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * .50,
                 width: MediaQuery.of(context).size.width,
-                child: Image.network(
-                  API.requestImg(widget.results.posterPath),
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return const CircularProgressIndicator.adaptive();
-                  },
+                child: Hero(
+                  tag: widget.results.id,
+                  child: Image.network(
+                    API.requestImg(widget.results.posterPath),
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return const CircularProgressIndicator.adaptive();
+                    },
+                  ),
                 ),
               ),
               const SizedBox(
@@ -62,12 +72,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   const Text('Favorite '),
                   GestureDetector(
-                    onTap: () {},
-                    child: const Icon(
-                      Icons.favorite,
-                      size: 16,
-                    ),
-                  ),
+                      onTap: () {},
+                      child: const Icon(
+                        Icons.favorite,
+                        size: 16,
+                        color: Colors.white,
+                      )),
                 ],
               ),
               const SizedBox(

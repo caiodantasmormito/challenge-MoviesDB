@@ -21,6 +21,7 @@ class ListMoviesCard extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (_) => DetailsPage(results: results),
+              fullscreenDialog: true,
             ),
           );
         },

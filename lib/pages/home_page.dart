@@ -28,9 +28,12 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              
-              TextFormField(onChanged: _controller.onChanged,),
-              const SizedBox(height: 16,),
+              TextFormField(
+                onChanged: _controller.onChanged,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
               ValueListenableBuilder<Movies?>(
                 valueListenable: _controller.movies,
                 builder: (_, movies, __) {
