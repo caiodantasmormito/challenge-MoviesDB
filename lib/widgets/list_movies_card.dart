@@ -61,8 +61,8 @@ class ListMoviesCard extends StatelessWidget {
                         overflow: TextOverflow.visible,
                       ),
                       const Spacer(),
-                      Text('Popularidade ${results.popularity}'),
-                      Text('Votos ${results.voteAverage}')
+                      Text('Popularity ${results.popularity}'),
+                      Text('Votes ${results.voteAverage}')
                     ],
                   ),
                 ),

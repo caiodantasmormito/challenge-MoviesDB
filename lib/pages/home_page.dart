@@ -7,6 +7,7 @@ import 'package:movies_db/widgets/list_movies_card.dart';
 import '../models/movies_models.dart';
 
 class HomePage extends StatefulWidget {
+  static const routeName = '/homePage';
   const HomePage({Key? key}) : super(key: key);
 
   @override

@@ -1,15 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../models/movies_models.dart';
 import '../utils/api_utils.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-import 'favorites.dart';
-
 class DetailsPage extends StatefulWidget {
+  static const routeName = '/detailsPage';
+
   final Results results;
   const DetailsPage({
     Key? key,
@@ -21,14 +20,14 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
+  final List<Results> _listFavorite = [];
   late YoutubePlayerController _playerController;
-  final List<Results> listFavorite = [];
 
   @override
   void initState() {
     super.initState();
     _playerController = YoutubePlayerController(
-      initialVideoId: 'XFUy4YCgppk',
+      initialVideoId: 'JfVOs4VSpmA',
       flags: const YoutubePlayerFlags(
         autoPlay: false,
         isLive: false,
@@ -38,8 +37,7 @@ class _DetailsPageState extends State<DetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final favorite = listFavorite.contains(widget.results);
-    var favoriteMovies = Provider.of<Favorites>(context);
+    bool isFavorite = _listFavorite.contains(widget.results);
     return Scaffold(
       appBar: AppBar(
           title: Text(
@@ -72,12 +70,27 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   const Text('Favorite '),
                   GestureDetector(
-                      onTap: () {},
-                      child: const Icon(
-                        Icons.favorite,
-                        size: 16,
-                        color: Colors.white,
-                      )),
+                    onTap: () {
+                      setState(() {
+                        if (isFavorite) {
+                          _listFavorite.remove(widget.results);
+                        } else {
+                          _listFavorite.add(widget.results);
+                        }
+                      });
+                    },
+                    child: isFavorite
+                        ? const Icon(
+                            Icons.favorite,
+                            size: 16,
+                            color: Colors.red,
+                          )
+                        : const Icon(
+                            Icons.favorite,
+                            size: 16,
+                            color: Colors.white,
+                          ),
+                  )
                 ],
               ),
               const SizedBox(
