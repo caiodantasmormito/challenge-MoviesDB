@@ -22,17 +22,181 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
   final List<Results> _listFavorite = [];
   late YoutubePlayerController _playerController;
+  final List listTrailers = [];
 
   @override
   void initState() {
     super.initState();
-    _playerController = YoutubePlayerController(
-      initialVideoId: 'JfVOs4VSpmA',
-      flags: const YoutubePlayerFlags(
-        autoPlay: false,
-        isLive: false,
-      ),
-    );
+    if (widget.results.title == 'Spider-Man: No Way Home') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'JfVOs4VSpmA',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Eternals') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'lRrSFvZUgGw',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title ==
+        'Shang-Chi and the Legend of the Ten Rings') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: '8YjFbMbfXaQ',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Black Widow') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'ybji16u608U',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Spider-Man: Far from Home') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'Nt9L1jCKGnE',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Avengers: Endgame') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'TcMBFSGVi1c',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Captain Marvel') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: '0LHxvxdRnYc',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Ant-Man and the Wasp') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'ZlNFpri-Y40',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Avengers: Infinity War') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: '6ZfuNTqbHE8',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Black Panther') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'wL4a4MafSjQ',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Thor: Ragnarok') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'UvNnqWLruXA',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Spider-Man: Homecoming') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'rk-dF1lIbIg',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Guardians of the Galaxy Vol. 2') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: '4-i8nTNSQFI',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Logan') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'KPND6SgkN7Q',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Doctor Strange') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'HSzx-zryEgM',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Guardians of the Galaxy Vol. 2') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: '4-i8nTNSQFI',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'X-Men: Apocalypse') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'COvnHv42T-A',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Captain America: Civil War') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'dKrVegVI0Us',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Deadpool') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'ONHBaC-pfsk',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Fantastic Four') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: '_rRoD28-WgU',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    } else if (widget.results.title == 'Ant-Man') {
+      _playerController = YoutubePlayerController(
+        initialVideoId: 'pWdKf3MneyI',
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          isLive: false,
+        ),
+      );
+    }
   }
 
   @override
